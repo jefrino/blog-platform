@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A simple community blogging platform.">
+  <title>Ink & Ideas — Blog</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./config.js"></script>
+  <script defer src="./app.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="./"><span class="brand-mark">i.</span> ink & ideas</a>
+    <nav>
+      <button class="nav-link" id="homeBtn">Explore</button>
+      <button class="btn btn-quiet hidden" id="newPostBtn">Write a post <span>＋</span></button>
+      <button class="btn btn-outline" id="loginBtn">Log in</button>
+      <button class="btn btn-dark" id="registerBtn">Get started</button>
+      <div id="userMenu" class="user-menu hidden">
+        <span id="welcomeUser"></span>
+        <button class="btn btn-quiet" id="logoutBtn">Log out</button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="eyebrow"><span class="eyebrow-line"></span> A SPACE FOR GOOD IDEAS</div>
+      <h1>Stories worth<br><em>sharing.</em></h1>
+      <p>Thoughts, discoveries, and perspectives from people who love putting ideas into words.</p>
+      <button class="btn btn-dark hero-cta" id="heroWriteBtn">Start writing <span>↗</span></button>
+      <div class="hero-decoration" aria-hidden="true">✳</div>
+    </section>
+
+    <section class="feed-section" id="feedSection">
+      <div class="section-heading">
+        <div><div class="eyebrow">THE COMMUNITY</div><h2>Latest stories</h2></div>
+        <span class="feed-count" id="postCount">Loading stories…</span>
+      </div>
+      <div id="notice" class="notice hidden" role="status"></div>
+      <div id="posts" class="post-grid"></div>
+    </section>
+  </main>
+
+  <footer><a class="brand" href="./"><span class="brand-mark">i.</span> ink & ideas</a><span>Made for curious minds.</span></footer>
+
+  <div class="modal-backdrop hidden" id="authModal">
+    <section class="modal" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+      <button class="modal-close" data-close="authModal" aria-label="Close">×</button>
+      <div class="eyebrow">YOUR WRITING JOURNEY</div>
+      <h2 id="authTitle">Welcome back.</h2>
+      <p class="modal-subtitle" id="authSubtitle">Log in to join the conversation.</p>
+      <form id="authForm">
+        <label id="usernameLabel" class="hidden">Username<input id="authUsername" autocomplete="username" minlength="3" maxlength="30"></label>
+        <label>Email address<input id="authEmail" type="email" autocomplete="email" required></label>
+        <label>Password<input id="authPassword" type="password" autocomplete="current-password" minlength="8" required></label>
+        <p class="form-error" id="authError"></p>
+        <button class="btn btn-dark btn-full" id="authSubmit" type="submit">Log in</button>
+      </form>
+      <p class="switch-auth" id="authSwitch">New here? <button id="switchAuthBtn">Create an account</button></p>
+    </section>
+  </div>
+
+  <div class="modal-backdrop hidden" id="editorModal">
+    <section class="modal editor-modal" role="dialog" aria-modal="true" aria-labelledby="editorTitle">
+      <button class="modal-close" data-close="editorModal" aria-label="Close">×</button>
+      <div class="eyebrow">PUT IT INTO WORDS</div>
+      <h2 id="editorTitle">Write a story.</h2>
+      <form id="postForm">
+        <label>Title<input id="postTitle" maxlength="160" minlength="3" placeholder="Give your story a title…" required></label>
+        <label>Your story<textarea id="postContent" rows="9" minlength="10" maxlength="20000" placeholder="Start writing here…" required></textarea></label>
+        <p class="form-error" id="postError"></p>
+        <div class="editor-actions"><button type="button" class="btn btn-outline" data-close="editorModal">Cancel</button><button class="btn btn-dark" id="publishBtn" type="submit">Publish story ↗</button></div>
+      </form>
+    </section>
+  </div>
+
+  <div class="modal-backdrop hidden" id="detailModal">
+    <section class="modal detail-modal" role="dialog" aria-modal="true" aria-labelledby="detailTitle">
+      <button class="modal-close" data-close="detailModal" aria-label="Close">×</button>
+      <div id="detailContent"></div>
+    </section>
+  </div>
+</body>
+</html>
